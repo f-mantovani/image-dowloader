@@ -18,7 +18,7 @@ async function test(fileToUpload) {
     .upload(fileToUpload, {
       eager: {
         transformation: {
-          quality: 100,
+          quality: 50,
           fetch_format: "webp",
         },
       },
@@ -41,13 +41,13 @@ async function test(fileToUpload) {
 // const downloadUrl = await test(dir[0]);
 
 async function download(downloadUrl, fileName) {
-  const format = downloadUrl.split('.').at(-1)
+  const format = downloadUrl.split(".").at(-1);
   const response = await axios
     .get(downloadUrl, { responseType: "arraybuffer" })
     .catch((e) => e.code);
   const buffer = response.data;
   fs.writeFile(`./output/${fileName}.${format}`, buffer, () =>
-    console.log("finished downloading!")
+    console.log("finished downloading!"),
   );
 }
 
