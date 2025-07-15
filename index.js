@@ -51,8 +51,6 @@ async function download(downloadUrl, fileName) {
   );
 }
 
-// download(downloadUrl);
-
 for (let i = 0; i < dir.length; i++) {
   const { url, fileName } = await test(dir[i]);
   await download(url, fileName);
